@@ -1,0 +1,29 @@
+# idle after 72h run (no load, layers cleared)
+=== CasparCG 리소스 (2026-11-24 20:23:04 ~ 2026-11-25 08:54:05, 12.5 h, 4507 samples) ===
+PID 변경/프로세스 소실 이벤트: 0
+metric                  first       last        min        max  slope/h(warm)
+main_rss_mb            6137.5     6137.5     6137.5     6137.5          0.000
+tree_rss_mb           12353.3    12353.8    12352.5    12353.8          0.018
+tree_pss_mb            9873.0     9873.0     9872.9     9873.0          0.001
+gpu_proc_mem_mb          24.0       24.0       24.0       24.0          0.000
+gpu_mem_mb             3750.0     3750.0     3750.0     3750.0          0.000
+threads                 101.6      102.0      101.0      102.0          0.014
+fds                     415.0      415.0      415.0      415.0          0.000
+nproc                     7.0        7.0        7.0        7.0          0.000
+sys_mem_used_mb       13626.5    13679.5    13564.0    13760.0          4.676
+swap_used_mb              1.0        1.0        1.0        1.0          0.000
+main_anon_mb           1983.8     1983.8     1983.8     1983.8          0.000
+main_heap_mb            141.8      141.8      141.8      141.8          0.000
+main_anon_big_mb        931.2      931.2      931.2      931.2          0.000
+main_anon_mid_mb        852.5      852.5      852.5      852.5          0.000
+main_anon_small_mb       30.0       30.0       30.0       30.0          0.000
+cefgpu_rss_mb          5739.0     5739.0     5739.0     5739.0          0.000
+cefgpu_anon_mb         5492.6     5492.6     5492.6     5492.6          0.000
+renderer_rss_mb          76.2       76.7       75.4       76.7          0.018
+main_cpu_pct       avg=4.4 max=7.1
+tree_cpu_pct       avg=4.6 max=7.4
+gpu_util           avg=1.0 max=1.0
+load1              avg=0.5 max=2.7
+gpu_temp           avg=46.9 max=52.0
+
+메모리 판정(tree RSS, warmup 이후): 0.02 MB/h -> OK (증가 경향 미미)

@@ -1,0 +1,158 @@
+ 7726ee0:	push   %rbp
+ 7726ee1:	mov    %rsp,%rbp
+ 7726ee4:	push   %r15
+ 7726ee6:	push   %r14
+ 7726ee8:	push   %r13
+ 7726eea:	push   %r12
+ 7726eec:	push   %rbx
+ 7726eed:	sub    $0x28,%rsp
+ 7726ef1:	mov    %rdx,%rbx
+ 7726ef4:	mov    %rdi,%r15
+ 7726ef7:	lea    0x10(%rdi),%r14
+ 7726efb:	mov    %r14,%rdi
+ 7726efe:	call   d9b11a0 <pthread_mutex_trylock@plt>
+ 7726f03:	test   %eax,%eax
+ 7726f05:	je     7726f0f <_ZN4base11trace_event18MallocDumpProvider12OnMemoryDumpERKNS0_14MemoryDumpArgsEPNS0_17ProcessMemoryDumpE+0x2f>
+ 7726f07:	mov    %r14,%rdi
+ 7726f0a:	call   76f63c0 <_ZN4base8internal8LockImpl12LockInternalEv>
+ 7726f0f:	mov    0x8(%r15),%r15b
+ 7726f13:	mov    %r14,%rdi
+ 7726f16:	call   d9b11b0 <pthread_mutex_unlock@plt>
+ 7726f1b:	cmp    $0x1,%r15b
+ 7726f1f:	jne    7727099 <_ZN4base11trace_event18MallocDumpProvider12OnMemoryDumpERKNS0_14MemoryDumpArgsEPNS0_17ProcessMemoryDumpE+0x1b9>
+ 7726f25:	movabs $0xaaaaaaaaaaaaaaaa,%rax
+ 7726f2f:	lea    -0x50(%rbp),%r15
+ 7726f33:	mov    %rax,0x20(%r15)
+ 7726f37:	movaps -0x6009ebe(%rip),%xmm0        # 171d080 <VP8TopLeftI4+0x410>
+ 7726f3e:	movaps %xmm0,0x10(%r15)
+ 7726f43:	movaps %xmm0,(%r15)
+ 7726f47:	mov    %r15,%rdi
+ 7726f4a:	call   d9b2ee0 <mallinfo@plt>
+ 7726f4f:	mov    0x10(%r15),%eax
+ 7726f53:	add    (%r15),%eax
+ 7726f56:	js     77270aa <_ZN4base11trace_event18MallocDumpProvider12OnMemoryDumpERKNS0_14MemoryDumpArgsEPNS0_17ProcessMemoryDumpE+0x1ca>
+ 7726f5c:	movslq -0x34(%rbp),%r14
+ 7726f60:	test   %r14,%r14
+ 7726f63:	js     77270aa <_ZN4base11trace_event18MallocDumpProvider12OnMemoryDumpERKNS0_14MemoryDumpArgsEPNS0_17ProcessMemoryDumpE+0x1ca>
+ 7726f69:	lea    -0x4a(%rbp),%rcx
+ 7726f6d:	movb   $0x6,0x11(%rcx)
+ 7726f71:	lea    -0x5ca91c4(%rip),%rdx        # 1a7ddb4 <chrome_sqlite3_str_vappendf.zOrd+0x65526>
+ 7726f78:	cmp    %rdx,%r15
+ 7726f7b:	seta   %sil
+ 7726f7f:	cmp    %rdx,%rcx
+ 7726f82:	setbe  %cl
+ 7726f85:	or     %sil,%cl
+ 7726f88:	je     77270aa <_ZN4base11trace_event18MallocDumpProvider12OnMemoryDumpERKNS0_14MemoryDumpArgsEPNS0_17ProcessMemoryDumpE+0x1ca>
+ 7726f8e:	mov    %eax,%r15d
+ 7726f91:	lea    -0x50(%rbp),%r13
+ 7726f95:	movw   $0x636f,0x4(%r13)
+ 7726f9c:	movl   $0x6c6c616d,0x0(%r13)
+ 7726fa4:	movb   $0x0,0x6(%r13)
+ 7726fa9:	mov    %rbx,%rdi
+ 7726fac:	mov    %r13,%rsi
+ 7726faf:	call   772b9f0 <_ZN4base11trace_event17ProcessMemoryDump19CreateAllocatorDumpERKNSt4__Cr12basic_stringIcNS2_11char_traitsIcEENS2_9allocatorIcEEEE>
+ 7726fb4:	mov    %rax,%r12
+ 7726fb7:	cmpb   $0x0,0x17(%r13)
+ 7726fbc:	jns    7726fc7 <_ZN4base11trace_event18MallocDumpProvider12OnMemoryDumpERKNS0_14MemoryDumpArgsEPNS0_17ProcessMemoryDumpE+0xe7>
+ 7726fbe:	mov    -0x50(%rbp),%rdi
+ 7726fc2:	call   7747550 <_ZN14allocator_shim13UncheckedFreeEPv>
+ 7726fc7:	lea    -0x5da742f(%rip),%rsi        # 197fb9f <_ZN12_GLOBAL__N_131kTraceCategoryForPressureEventsE+0x13f048>
+ 7726fce:	lea    -0x54d2743(%rip),%r13        # 2254892 <_ZN4base11trace_event19MemoryAllocatorDump11kUnitsBytesE>
+ 7726fd5:	mov    %r12,%rdi
+ 7726fd8:	mov    %r13,%rdx
+ 7726fdb:	mov    %r15,%rcx
+ 7726fde:	call   7727a70 <_ZN4base11trace_event19MemoryAllocatorDump9AddScalarEPKcS3_m>
+ 7726fe3:	lea    -0x54d2771(%rip),%rsi        # 2254879 <_ZN4base11trace_event19MemoryAllocatorDump9kNameSizeE>
+ 7726fea:	mov    %r12,%rdi
+ 7726fed:	mov    %r13,%rdx
+ 7726ff0:	mov    %r14,%rcx
+ 7726ff3:	call   7727a70 <_ZN4base11trace_event19MemoryAllocatorDump9AddScalarEPKcS3_m>
+ 7726ff8:	mov    $0x20,%edi
+ 7726ffd:	call   7747a10 <_Znam>
+ 7727002:	mov    %rax,-0x50(%rbp)
+ 7727006:	movq   $0x18,-0x48(%rbp)
+ 772700e:	movabs $0x8000000000000020,%rcx
+ 7727018:	mov    %rcx,-0x40(%rbp)
+ 772701c:	lea    0x18(%rax),%rcx
+ 7727020:	cmp    %rax,%rcx
+ 7727023:	jb     77270aa <_ZN4base11trace_event18MallocDumpProvider12OnMemoryDumpERKNS0_14MemoryDumpArgsEPNS0_17ProcessMemoryDumpE+0x1ca>
+ 7727029:	lea    -0x54d27d0(%rip),%rdx        # 2254860 <_ZN4base11trace_event18MallocDumpProvider17kAllocatedObjectsE>
+ 7727030:	cmp    %rdx,%rax
+ 7727033:	seta   %sil
+ 7727037:	cmp    %rdx,%rcx
+ 772703a:	setbe  %cl
+ 772703d:	or     %sil,%cl
+ 7727040:	je     77270aa <_ZN4base11trace_event18MallocDumpProvider12OnMemoryDumpERKNS0_14MemoryDumpArgsEPNS0_17ProcessMemoryDumpE+0x1ca>
+ 7727042:	movaps -0x54d27e9(%rip),%xmm0        # 2254860 <_ZN4base11trace_event18MallocDumpProvider17kAllocatedObjectsE>
+ 7727049:	movups %xmm0,(%rax)
+ 772704c:	movabs $0x737463656a626f5f,%rcx
+ 7727056:	mov    %rcx,0x10(%rax)
+ 772705a:	movb   $0x0,0x18(%rax)
+ 772705e:	lea    -0x50(%rbp),%r15
+ 7727062:	mov    %rbx,%rdi
+ 7727065:	mov    %r15,%rsi
+ 7727068:	call   772b9f0 <_ZN4base11trace_event17ProcessMemoryDump19CreateAllocatorDumpERKNSt4__Cr12basic_stringIcNS2_11char_traitsIcEENS2_9allocatorIcEEEE>
+ 772706d:	mov    %rax,%rbx
+ 7727070:	cmpb   $0x0,0x17(%r15)
+ 7727075:	jns    7727080 <_ZN4base11trace_event18MallocDumpProvider12OnMemoryDumpERKNS0_14MemoryDumpArgsEPNS0_17ProcessMemoryDumpE+0x1a0>
+ 7727077:	mov    -0x50(%rbp),%rdi
+ 772707b:	call   7747550 <_ZN14allocator_shim13UncheckedFreeEPv>
+ 7727080:	lea    -0x54d280e(%rip),%rsi        # 2254879 <_ZN4base11trace_event19MemoryAllocatorDump9kNameSizeE>
+ 7727087:	lea    -0x54d27fc(%rip),%rdx        # 2254892 <_ZN4base11trace_event19MemoryAllocatorDump11kUnitsBytesE>
+ 772708e:	mov    %rbx,%rdi
+ 7727091:	mov    %r14,%rcx
+ 7727094:	call   7727a70 <_ZN4base11trace_event19MemoryAllocatorDump9AddScalarEPKcS3_m>
+ 7727099:	mov    $0x1,%al
+ 772709b:	add    $0x28,%rsp
+ 772709f:	pop    %rbx
+ 77270a0:	pop    %r12
+ 77270a2:	pop    %r13
+ 77270a4:	pop    %r14
+ 77270a6:	pop    %r15
+ 77270a8:	pop    %rbp
+ 77270a9:	ret
+ 77270aa:	ud2
+ 77270ac:	int3
+ 77270ad:	int3
+ 77270ae:	int3
+ 77270af:	int3
+ 77270b0:	push   %rbp
+ 77270b1:	mov    %rsp,%rbp
+ 77270b4:	lea    0x65f3745(%rip),%rax        # dd1a800 <_ZTVN4base11trace_event30MemoryDumpPartitionStatsDumperE+0x10>
+ 77270bb:	mov    %rax,(%rdi)
+ 77270be:	mov    %rsi,0x8(%rdi)
+ 77270c2:	mov    %rdx,0x10(%rdi)
+ 77270c6:	test   %ecx,%ecx
+ 77270c8:	xorps  %xmm0,%xmm0
+ 77270cb:	movups %xmm0,0x18(%rdi)
+ 77270cf:	movups %xmm0,0x28(%rdi)
+ 77270d3:	movups %xmm0,0x38(%rdi)
+ 77270d7:	movups %xmm0,0x48(%rdi)
+ 77270db:	setne  0x58(%rdi)
+ 77270df:	pop    %rbp
+ 77270e0:	ret
+ 77270e1:	int3
+ 77270e2:	int3
+ 77270e3:	int3
+ 77270e4:	int3
+ 77270e5:	int3
+ 77270e6:	int3
+ 77270e7:	int3
+ 77270e8:	int3
+ 77270e9:	int3
+ 77270ea:	int3
+ 77270eb:	int3
+ 77270ec:	int3
+ 77270ed:	int3
+ 77270ee:	int3
+ 77270ef:	int3
+ 77270f0:	push   %rbp
+ 77270f1:	mov    %rsp,%rbp
+ 77270f4:	push   %r15
+ 77270f6:	push   %r14
+ 77270f8:	push   %r13
+ 77270fa:	push   %r12
+ 77270fc:	push   %rbx
+ 77270fd:	rex.W
+ 77270fe:	.byte 0x83
+ 77270ff:	in     (%dx),%al

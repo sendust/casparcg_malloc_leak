@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>stress_news</title>
+<style>
+  @font-face {
+    font-family: 'NotoKR';
+    src: url('fonts/NotoSansKR-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+  }
+  html, body {
+    margin: 0; width: 1920px; height: 1080px;
+    background: transparent; overflow: hidden;
+    font-family: 'NotoKR', sans-serif;
+  }
+  /* 45 layers -> 5 cols x 9 rows grid; layer number comes from data.layer */
+  #card {
+    position: absolute; box-sizing: border-box;
+    width: 376px; height: 112px; padding: 8px 12px;
+    background: rgba(10, 40, 110, .82); color: #fff;
+    border-left: 6px solid #3fa9ff; border-radius: 4px;
+    opacity: 0; transform: translateX(-40px);
+    transition: opacity .4s ease, transform .4s ease;
+    overflow: hidden;
+  }
+  #card.on { opacity: 1; transform: translateX(0); }
+  #card.flash { animation: flash .6s ease; }
+  @keyframes flash { 0% { background: rgba(255,200,0,.9); } 100% { background: rgba(10,40,110,.82); } }
+  #hdr { font-size: 13px; font-weight: 400; color: #9fd3ff; white-space: nowrap; }
+  #title {
+    font-size: 21px; font-weight: 700; line-height: 1.25;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  #tickwrap { position: relative; height: 30px; overflow: hidden; margin-top: 4px; }
+  #ticker {
+    position: absolute; left: 0; top: 0; white-space: nowrap;
+    font-size: 19px; font-weight: 400; color: #e8f0ff;
+    will-change: transform;
+  }
+</style>
+</head>
+<body>
+<div id="card">
+  <div id="hdr"></div>
+  <div id="title"></div>
+  <div id="tickwrap"><div id="ticker"></div></div>
+</div>
+<script>
+  var card = document.getElementById('card');
+  var hdr = document.getElementById('hdr');
+  var title = document.getElementById('title');
+  var ticker = document.getElementById('ticker');
+  var tickX = 0, tickW = 0, rafId = 0, lastTs = 0;
+  var placed = false;
+
+  function place(layer) {
+    var i = Math.max(0, (parseInt(layer, 10) || 1) - 1) % 45;
+    var col = i % 5, row = Math.floor(i / 5);
+    card.style.left = (8 + col * 382) + 'px';
+    card.style.top = (24 + row * 116) + 'px';
+    placed = true;
+  }
+
+  function loop(ts) {
+    var dt = lastTs ? (ts - lastTs) : 16;
+    lastTs = ts;
+    tickX -= dt * 0.12;                 // ~120 px/s scroll
+    if (tickX < -tickW) tickX = 360;
+    ticker.style.transform = 'translateX(' + tickX + 'px)';
+    rafId = requestAnimationFrame(loop);
+  }
+
+  window.update = function (raw) {
+    var d = {};
+    try { d = JSON.parse(raw); } catch (e) { d = { f0: String(raw) }; }
+    if (d.layer !== undefined && !placed) place(d.layer);
+    hdr.textContent = 'L' + (d.layer || '?') + '  #' + (d.seq || 0) + '  ' + (d.ts || '') + '  ' + (d.press || '');
+    title.textContent = d.f0 || '';
+    ticker.textContent = d.f1 || '';
+    tickW = ticker.scrollWidth;
+    tickX = 360;
+  };
+
+  window.play = function () {
+    card.classList.add('on');
+    if (!rafId) rafId = requestAnimationFrame(loop);
+  };
+
+  window.stop = function () {
+    card.classList.remove('on');
+    if (rafId) { cancelAnimationFrame(rafId); rafId = 0; lastTs = 0; }
+  };
+
+  window.next = function () {
+    card.classList.remove('flash'); void card.offsetWidth; card.classList.add('flash');
+  };
+
+  window.remove = function () { window.stop(); };
+
+  // CG INVOKE <name>
+  window.flash = window.next;
+</script>
+</body>
+</html>
