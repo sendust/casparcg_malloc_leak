@@ -1,0 +1,84 @@
+== gdb at 0x77270aa
+base::trace_event::MallocDumpProvider::OnMemoryDump(base::trace_event::MemoryDumpArgs const&, base::trace_event::ProcessMemoryDump*) + 458 in section .text
+Line 465 of "../../base/trace_event/malloc_dump_provider.cc" starts at address 0x772709b <OnMemoryDump()+443> and ends at 0x77270ac.
+   0x77270aa <OnMemoryDump()+458>:	ud2
+   0x77270ac:	int3
+   0x77270ad:	int3
+0x77270aa <OnMemoryDump()+458>:	0x0f	0x0b
+== disasm OnMemoryDump (0x7726ee0..0x7727100)
+33: 7726f56:	js     77270aa <_ZN4base11trace_event18MallocDumpProvider12OnMemoryDumpERKNS0_14MemoryDumpArgsEPNS0_17ProcessMemoryDumpE+0x1ca>
+36: 7726f63:	js     77270aa <_ZN4base11trace_event18MallocDumpProvider12OnMemoryDumpERKNS0_14MemoryDumpArgsEPNS0_17ProcessMemoryDumpE+0x1ca>
+45: 7726f88:	je     77270aa <_ZN4base11trace_event18MallocDumpProvider12OnMemoryDumpERKNS0_14MemoryDumpArgsEPNS0_17ProcessMemoryDumpE+0x1ca>
+78: 7727023:	jb     77270aa <_ZN4base11trace_event18MallocDumpProvider12OnMemoryDumpERKNS0_14MemoryDumpArgsEPNS0_17ProcessMemoryDumpE+0x1ca>
+85: 7727040:	je     77270aa <_ZN4base11trace_event18MallocDumpProvider12OnMemoryDumpERKNS0_14MemoryDumpArgsEPNS0_17ProcessMemoryDumpE+0x1ca>
+114: 77270aa:	ud2
+== callers jumping to 77270aa
+-- 0x7726f56
+ 7726f47:	mov    %r15,%rdi
+ 7726f4a:	call   d9b2ee0 <mallinfo@plt>
+ 7726f4f:	mov    0x10(%r15),%eax
+ 7726f53:	add    (%r15),%eax
+ 7726f56:	js     77270aa <_ZN4base11trace_event18MallocDumpProvider12OnMemoryDumpERKNS0_14MemoryDumpArgsEPNS0_17ProcessMemoryDumpE+0x1ca>
+base::trace_event::MallocDumpProvider::OnMemoryDump(base::trace_event::MemoryDumpArgs const&, base::trace_event::ProcessMemoryDump*)
+./../../base/numerics/safe_conversions.h:104
+ReportMallinfoStats
+./../../base/trace_event/malloc_dump_provider.cc:202
+OnMemoryDump
+./../../base/trace_event/malloc_dump_provider.cc:387
+-- 0x7726f63
+ 7726f53:	add    (%r15),%eax
+ 7726f56:	js     77270aa <_ZN4base11trace_event18MallocDumpProvider12OnMemoryDumpERKNS0_14MemoryDumpArgsEPNS0_17ProcessMemoryDumpE+0x1ca>
+ 7726f5c:	movslq -0x34(%rbp),%r14
+ 7726f60:	test   %r14,%r14
+ 7726f63:	js     77270aa <_ZN4base11trace_event18MallocDumpProvider12OnMemoryDumpERKNS0_14MemoryDumpArgsEPNS0_17ProcessMemoryDumpE+0x1ca>
+base::trace_event::MallocDumpProvider::OnMemoryDump(base::trace_event::MemoryDumpArgs const&, base::trace_event::ProcessMemoryDump*)
+./../../base/numerics/safe_conversions.h:104
+ReportMallinfoStats
+./../../base/trace_event/malloc_dump_provider.cc:203
+OnMemoryDump
+./../../base/trace_event/malloc_dump_provider.cc:387
+-- 0x7726f88
+ 7726f7b:	seta   %sil
+ 7726f7f:	cmp    %rdx,%rcx
+ 7726f82:	setbe  %cl
+ 7726f85:	or     %sil,%cl
+ 7726f88:	je     77270aa <_ZN4base11trace_event18MallocDumpProvider12OnMemoryDumpERKNS0_14MemoryDumpArgsEPNS0_17ProcessMemoryDumpE+0x1ca>
+base::trace_event::MallocDumpProvider::OnMemoryDump(base::trace_event::MemoryDumpArgs const&, base::trace_event::ProcessMemoryDump*)
+./gen/third_party/libc++/src/include/__string/char_traits.h:145
+__init
+./gen/third_party/libc++/src/include/string:2607
+basic_string<0>
+./gen/third_party/libc++/src/include/string:1063
+OnMemoryDump
+./../../base/trace_event/malloc_dump_provider.cc:391
+-- 0x7727023
+ 772700e:	movabs $0x8000000000000020,%rcx
+ 7727018:	mov    %rcx,-0x40(%rbp)
+ 772701c:	lea    0x18(%rax),%rcx
+ 7727020:	cmp    %rax,%rcx
+ 7727023:	jb     77270aa <_ZN4base11trace_event18MallocDumpProvider12OnMemoryDumpERKNS0_14MemoryDumpArgsEPNS0_17ProcessMemoryDumpE+0x1ca>
+base::trace_event::MallocDumpProvider::OnMemoryDump(base::trace_event::MemoryDumpArgs const&, base::trace_event::ProcessMemoryDump*)
+./gen/third_party/libc++/src/include/__utility/is_pointer_in_range.h:38
+copy
+./gen/third_party/libc++/src/include/__string/char_traits.h:145
+__init
+./gen/third_party/libc++/src/include/string:2607
+basic_string<0>
+./gen/third_party/libc++/src/include/string:1063
+OnMemoryDump
+./../../base/trace_event/malloc_dump_provider.cc:397
+-- 0x7727040
+ 7727033:	seta   %sil
+ 7727037:	cmp    %rdx,%rcx
+ 772703a:	setbe  %cl
+ 772703d:	or     %sil,%cl
+ 7727040:	je     77270aa <_ZN4base11trace_event18MallocDumpProvider12OnMemoryDumpERKNS0_14MemoryDumpArgsEPNS0_17ProcessMemoryDumpE+0x1ca>
+base::trace_event::MallocDumpProvider::OnMemoryDump(base::trace_event::MemoryDumpArgs const&, base::trace_event::ProcessMemoryDump*)
+./gen/third_party/libc++/src/include/__string/char_traits.h:145
+__init
+./gen/third_party/libc++/src/include/string:2607
+basic_string<0>
+./gen/third_party/libc++/src/include/string:1063
+OnMemoryDump
+./../../base/trace_event/malloc_dump_provider.cc:397
+DONE

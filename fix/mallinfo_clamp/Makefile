@@ -1,7 +1,7 @@
 CC ?= gcc
 all: libmallinfo_clamp.so mi_big
 libmallinfo_clamp.so: mallinfo_clamp.c
-	$(CC) -O2 -Wall -shared -fPIC -o $@ $<
+	$(CC) -O2 -Wall -Wno-deprecated-declarations -shared -fPIC -o $@ $<
 mi_big: mi_big.c
 	$(CC) -O2 -o $@ $< -lpthread
 test: all

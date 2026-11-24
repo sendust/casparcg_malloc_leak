@@ -7,3 +7,4 @@ fix/mallinfo_clamp/mi_big
 *.crash
 core*
 libcef.so*
+!analysis/cef_symbols/analyze.out
